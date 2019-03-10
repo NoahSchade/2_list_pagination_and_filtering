@@ -39,22 +39,22 @@ const ul = document.createElement("UL");
        "invoke" the function 
 ***/
 
-function showPage(num, pag) {
-    let people = document.querySelectorAll(".student-item");
-    let chosenNumber = num;
-    let number = (chosenNumber * 10);
-    let y = 0;
+// function showPage(num, pag) {
+//     let people = document.querySelectorAll(".student-item");
+//     let chosenNumber = num;
+//     let number = (chosenNumber * 10);
+//     let y = 0;
 
-	for (let i = 0; i < people.length; i++) {
-		    document.querySelectorAll(".student-item")[i].style.display = "none";
-		}
+// 	for (let i = 0; i < people.length; i++) {
+// 		    document.querySelectorAll(".student-item")[i].style.display = "none";
+// 		}
          
-    for (let i = number; i < (number + 10); i++) {
-        if (i < people.length) {
-            document.querySelectorAll(".student-item")[i].style.display = "block";
-        }
-    }
-}
+//     for (let i = number; i < (number + 10); i++) {
+//         if (i < people.length) {
+//             document.querySelectorAll(".student-item")[i].style.display = "block";
+//         }
+//     }
+// }
 
 const divForSearch = document.createElement("DIV");
 divForSearch.setAttribute("class", "student-search");
@@ -101,6 +101,7 @@ document.querySelectorAll("#mySearch")[0].addEventListener("keyup", searching, f
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
+
 function appendPageLinks() {
     const div = document.createElement("DIV");
     div.classList.add("pagination");
@@ -135,7 +136,7 @@ function appendPageLinks() {
  }
 
 
-showPage(0)
+searching();
 appendPageLinks();
 
 
