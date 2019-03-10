@@ -39,10 +39,11 @@ const ul = document.createElement("UL");
        "invoke" the function 
 ***/
 
-function showPage() {
+function showPage(num, pag) {
     let people = document.querySelectorAll(".student-item");
     let chosenNumber = num;
-	let number = (chosenNumber * 10);
+    let number = (chosenNumber * 10);
+    let y = 0;
 
 	for (let i = 0; i < people.length; i++) {
 		    document.querySelectorAll(".student-item")[i].style.display = "none";
@@ -69,12 +70,73 @@ divForSearch.appendChild(button);
 document.querySelectorAll("button")[0].style.marginLeft = "4px"; 
 let search = document.createTextNode("Search");
 button.appendChild(search);
+
+const searching = function (event) {
+    let mySearch = document.querySelector("#mySearch").value;
+    let name;
+    let match1;
+    let match2;
+    let y = 0;
+    for(let i = 0; i < document.querySelectorAll(".student-details").length; i++) {
+        name = document.querySelectorAll(".student-details h3")[i].textContent;
+        let variable = mySearch;
+        let regex = new RegExp("^" + variable + ".*");
+        // let string = "";
+        // string.replace(regex, "replacement");
+        match1 = mySearch.match(regex);
+        match2 = name.match(regex);
+        document.querySelectorAll(".student-item")[i].style.display = "none";
+        if(match1 && match2){
+            if(y < 10) {
+                document.querySelectorAll(".student-item")[i].style.display = "block";
+            }
+            y++
+        }
+    }
+}
+
+button.addEventListener("click", searching, false);
+document.querySelectorAll("#mySearch")[0].addEventListener("keyup", searching, false);
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
+function appendPageLinks() {
+    const div = document.createElement("DIV");
+    div.classList.add("pagination");
+    document.querySelector(".page").appendChild(div);
+ 
+    const ul = document.createElement("UL");
+    document.querySelector(".pagination").appendChild(ul);
+ 
+    let x = document.querySelectorAll(".student-item");
+    let z = 0;
+    for (let i = x.length - 1; i >= 0; i-=10) {
+       z++;
+ 
+       let li = document.createElement("LI");
+       ul.appendChild(li);
+       li.style.margin = "0 2px 0 2px";
+ 
+       let a = document.createElement("A");
+       li.appendChild(a);
+       
+       
+       ul.firstChild.firstChild.setAttribute("class","active");
+ 
+       number = document.createTextNode(z);
+       a.appendChild(number);
+       
+ 
+ 
+       li.style.cursor = "pointer";
+    
+    }
+ }
 
 
+showPage(0)
+appendPageLinks();
 
 
 
