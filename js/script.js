@@ -17,12 +17,16 @@ FSJS project 2 - List Filter and Pagination
    scoped to that function.
 ***/
 
-
-
+const page = document.querySelector("body div.page");
+let people = document.querySelectorAll(".student-item");
+const div = document.createElement("DIV");
+const ul = document.createElement("UL");
 
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
+
+  
 
    Pro Tips: 
      - Keep in mind that with a list of 54 students, the last page 
@@ -35,9 +39,36 @@ FSJS project 2 - List Filter and Pagination
        "invoke" the function 
 ***/
 
+function showPage() {
+    let people = document.querySelectorAll(".student-item");
+    let chosenNumber = num;
+	let number = (chosenNumber * 10);
 
+	for (let i = 0; i < people.length; i++) {
+		    document.querySelectorAll(".student-item")[i].style.display = "none";
+		}
+         
+    for (let i = number; i < (number + 10); i++) {
+        if (i < people.length) {
+            document.querySelectorAll(".student-item")[i].style.display = "block";
+        }
+    }
+}
 
-
+const divForSearch = document.createElement("DIV");
+divForSearch.setAttribute("class", "student-search");
+const page_header = document.querySelector(".page-header");
+page_header.appendChild(divForSearch);
+let input = document.createElement("INPUT");
+input.setAttribute("placeholder", "Search for students...");
+input.setAttribute("type", "search");
+input.setAttribute("id", "mySearch");
+divForSearch.appendChild(input);
+const button = document.createElement("BUTTON");
+divForSearch.appendChild(button);
+document.querySelectorAll("button")[0].style.marginLeft = "4px"; 
+let search = document.createTextNode("Search");
+button.appendChild(search);
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
