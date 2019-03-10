@@ -25,9 +25,7 @@ const ul = document.createElement("UL");
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
-
   
-
    Pro Tips: 
      - Keep in mind that with a list of 54 students, the last page 
        will only display four.
@@ -39,22 +37,23 @@ const ul = document.createElement("UL");
        "invoke" the function 
 ***/
 
-function showPage(num, pag) {
-    let people = document.querySelectorAll(".student-item");
-    let chosenNumber = num;
-    let number = (chosenNumber * 10);
-    let y = 0;
+// function showPage(num, pag) {
+//     let people = document.querySelectorAll(".student-item");
+//     let chosenNumber = num;
+//     let number = (chosenNumber * 10);
+//     let y = 0;
 
-	for (let i = 0; i < people.length; i++) {
-		    document.querySelectorAll(".student-item")[i].style.display = "none";
-		}
+// 	for (let i = 0; i < people.length; i++) {
+// 		    document.querySelectorAll(".student-item")[i].style.display = "none";
+// 		}
          
-    for (let i = number; i < (number + 10); i++) {
-        if (i < people.length) {
-            document.querySelectorAll(".student-item")[i].style.display = "block";
-        }
-    }
-}
+//     for (let i = number; i < (number + 10); i++) {
+//         if (i < people.length) {
+            
+//             // document.querySelectorAll(".student-item")[i].style.display = "block";
+//         }
+//     }
+// }
 
 const divForSearch = document.createElement("DIV");
 divForSearch.setAttribute("class", "student-search");
@@ -71,7 +70,7 @@ document.querySelectorAll("button")[0].style.marginLeft = "4px";
 let search = document.createTextNode("Search");
 button.appendChild(search);
 
-const searching = function () {
+const searching = function (event) {
     let mySearch = document.querySelector("#mySearch").value;
     let name;
     let match1;
@@ -86,30 +85,21 @@ const searching = function () {
         match1 = mySearch.match(regex);
         match2 = name.match(regex);
         document.querySelectorAll(".student-item")[i].style.display = "none";
-        if(match1 && match2){
-            
-            function inside(num) {
-                let chosenNumber = num;
-		        let number = (chosenNumber * 10);
-                // y = num * 10;
-                // if(a) {
-                //    document.querySelectorAll(".student-item")[i].style.display = "block";
-                // }
-
-
-                for (let i = number; i < (number + 10); i++) {
-                    if (i < people.length) {
-                       document.querySelectorAll(".student-item")[i].style.display = "block";
-                    }
-                 }
+        if(match1 && match2) {
+            if(y < 10) {
+                document.querySelectorAll(".student-item")[i].style.display = "block";
+                document.querySelectorAll(".student-item")[i].classList.add("matched");
+            } else if (y >= 10){
+                document.querySelectorAll(".student-item")[i].style.display = "none";
+                document.querySelectorAll(".student-item")[i].classList.add("matched");
             }
-            inside(5);
-
             y++
+        } else {
+            document.querySelectorAll(".student-item")[i].classList.remove("matched");
         }
     }
 }
-
+// const showPageVar = showPage(0);
 button.addEventListener("click", searching, false);
 document.querySelectorAll("#mySearch")[0].addEventListener("keyup", searching, false);
 /*** 
@@ -151,7 +141,7 @@ function appendPageLinks() {
  }
 
 
-searching(10);
+searching();
 appendPageLinks();
 
 
