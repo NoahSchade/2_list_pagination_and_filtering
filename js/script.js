@@ -146,8 +146,29 @@ function appendPageLinks() {
        li.style.cursor = "pointer";
     
     }
- }
 
+}
+
+
+    
+    function highlight() {
+    let link = document.querySelectorAll(".pagination ul li a");
+    for(let i = 0; i < link.length; i++) {
+        
+        console.log(link[i]);
+    }
+}
+// function highlight() {
+//     for(let i = 0; i < link.length; i++) {
+//         console.log(link[i].textContent);
+//     }
+// }
+
+
+    document.querySelectorAll("#mySearch")[0].addEventListener("keyup", highlight, false)
+    button.addEventListener("click", highlight, false);
+
+ 
 searching();
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
