@@ -39,22 +39,22 @@ const ul = document.createElement("UL");
        "invoke" the function 
 ***/
 
-// function showPage(num, pag) {
-//     let people = document.querySelectorAll(".student-item");
-//     let chosenNumber = num;
-//     let number = (chosenNumber * 10);
-//     let y = 0;
+function showPage(num, pag) {
+    let people = document.querySelectorAll(".student-item");
+    let chosenNumber = num;
+    let number = (chosenNumber * 10);
+    let y = 0;
 
-// 	for (let i = 0; i < people.length; i++) {
-// 		    document.querySelectorAll(".student-item")[i].style.display = "none";
-// 		}
+	for (let i = 0; i < people.length; i++) {
+		    document.querySelectorAll(".student-item")[i].style.display = "none";
+		}
          
-//     for (let i = number; i < (number + 10); i++) {
-//         if (i < people.length) {
-//             document.querySelectorAll(".student-item")[i].style.display = "block";
-//         }
-//     }
-// }
+    for (let i = number; i < (number + 10); i++) {
+        if (i < people.length) {
+            document.querySelectorAll(".student-item")[i].style.display = "block";
+        }
+    }
+}
 
 const divForSearch = document.createElement("DIV");
 divForSearch.setAttribute("class", "student-search");
@@ -71,7 +71,7 @@ document.querySelectorAll("button")[0].style.marginLeft = "4px";
 let search = document.createTextNode("Search");
 button.appendChild(search);
 
-const searching = function (event) {
+const searching = function () {
     let mySearch = document.querySelector("#mySearch").value;
     let name;
     let match1;
@@ -87,9 +87,24 @@ const searching = function (event) {
         match2 = name.match(regex);
         document.querySelectorAll(".student-item")[i].style.display = "none";
         if(match1 && match2){
-            if(y < 10) {
-                document.querySelectorAll(".student-item")[i].style.display = "block";
+            
+            function inside(num) {
+                let chosenNumber = num;
+		        let number = (chosenNumber * 10);
+                // y = num * 10;
+                // if(a) {
+                //    document.querySelectorAll(".student-item")[i].style.display = "block";
+                // }
+
+
+                for (let i = number; i < (number + 10); i++) {
+                    if (i < people.length) {
+                       document.querySelectorAll(".student-item")[i].style.display = "block";
+                    }
+                 }
             }
+            inside(5);
+
             y++
         }
     }
@@ -136,7 +151,7 @@ function appendPageLinks() {
  }
 
 
-searching();
+searching(10);
 appendPageLinks();
 
 
