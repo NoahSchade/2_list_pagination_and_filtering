@@ -99,15 +99,23 @@ const searching = function (event) {
         }
     }
 }
+
 // const showPageVar = showPage(0);
+
 button.addEventListener("click", searching, false);
 document.querySelectorAll("#mySearch")[0].addEventListener("keyup", searching, false);
+
+button.addEventListener("click", appendPageLinks, false);
+document.querySelectorAll("#mySearch")[0].addEventListener("keyup", appendPageLinks, false);
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
 
 function appendPageLinks() {
+    // document.querySelectorAll(".pagination ul")[0].parentNode.removeChild(document.querySelectorAll(".pagination ul")[0]);
+    const selectUl = document.querySelectorAll(".pagination ul");
+    if (selectUl.length >= 1) {document.querySelectorAll(".pagination ul")[0].parentNode.removeChild(document.querySelectorAll(".pagination ul")[0]);}
     const div = document.createElement("DIV");
     div.classList.add("pagination");
     document.querySelector(".page").appendChild(div);
@@ -115,7 +123,7 @@ function appendPageLinks() {
     const ul = document.createElement("UL");
     document.querySelector(".pagination").appendChild(ul);
  
-    let x = document.querySelectorAll(".student-item");
+    let x = document.querySelectorAll(".matched");
     let z = 0;
     for (let i = x.length - 1; i >= 0; i-=10) {
        z++;
@@ -140,10 +148,6 @@ function appendPageLinks() {
     }
  }
 
-
 searching();
-appendPageLinks();
-
-
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
