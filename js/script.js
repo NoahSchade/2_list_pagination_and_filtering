@@ -149,18 +149,30 @@ function appendPageLinks() {
 
 }
 
-
+function unhighlight() {
+    let link = document.querySelectorAll(".pagination ul li a");
+    for(let i = 0; i < link.length; i++) {
+        link[i].addEventListener("click", linkInactive, false);
+        function linkInactive() {
+            for(let i = 0; i < link.length; i++) {
+                link[i].classList.remove("active");
+            }
+        }
+    }
+}
     
     function highlight() {
         let link = document.querySelectorAll(".pagination ul li a");
         for(let i = 0; i < link.length; i++) {
             link[i].addEventListener("click", linkActive, false);
-
             function linkActive() {
                 link[i].classList.add("active");
             }
         }
     }
+
+    document.querySelector("#mySearch").addEventListener("keyup", unhighlight, false)
+    button.addEventListener("click", unhighlight, false);
 
     document.querySelector("#mySearch").addEventListener("keyup", highlight, false)
     button.addEventListener("click", highlight, false);
