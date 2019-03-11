@@ -139,9 +139,12 @@ document.querySelectorAll("#mySearch")[0].addEventListener("keyup", appendPageLi
 ***/
 
 function appendPageLinks() {
+    let paginationLength = document.querySelectorAll(".pagination").length;
+    console.log(paginationLength);
     // document.querySelectorAll(".pagination ul")[0].parentNode.removeChild(document.querySelectorAll(".pagination ul")[0]);
     const selectUl = document.querySelectorAll(".pagination ul");
     if (selectUl.length >= 1) {document.querySelectorAll(".pagination ul")[0].parentNode.removeChild(document.querySelectorAll(".pagination ul")[0]);}
+    if (paginationLength >= 1) {document.querySelectorAll(".pagination")[0].parentNode.removeChild(document.querySelectorAll(".pagination")[0])}
     const div = document.createElement("DIV");
     div.classList.add("pagination");
     document.querySelector(".page").appendChild(div);
@@ -205,7 +208,7 @@ function unhighlight() {
 
 function aSearching() {
     searching();
-    showPage(5);
+    showPage(0);
 }
 
 
