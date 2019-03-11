@@ -74,8 +74,9 @@ for(let i = 0; i < people.length; i++) {
     people[i].classList.add("matched");
 }
 
-appendPageLinks()
-
+appendPageLinks();
+unhighlight();
+highlight();
 
 const searching = function (event) {
     let mySearch = document.querySelector("#mySearch").value;
