@@ -119,7 +119,9 @@ function showPage(num) {
     
        for (let i = number; i < (number + 10); i++) {
           if (i < people.length) {
-             document.querySelectorAll(".matched")[i].style.display = "block";
+              if (document.querySelectorAll(".matched")[i]) {
+                document.querySelectorAll(".matched")[i].style.display = "block";
+              }
           }
        }
    }
@@ -203,7 +205,7 @@ function unhighlight() {
 
 function aSearching() {
     searching();
-    showPage(0);
+    showPage(5);
 }
 
 
