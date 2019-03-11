@@ -130,6 +130,7 @@ function showPage(num) {
 
 button.addEventListener("click", aSearching, false);
 document.querySelectorAll("#mySearch")[0].addEventListener("keyup", aSearching, false);
+document.querySelectorAll('.pagination ul li a')[1].addEventListener("click", aSearching, false);
 
 button.addEventListener("click", appendPageLinks, false);
 document.querySelectorAll("#mySearch")[0].addEventListener("keyup", appendPageLinks, false);
@@ -140,7 +141,6 @@ document.querySelectorAll("#mySearch")[0].addEventListener("keyup", appendPageLi
 
 function appendPageLinks() {
     let paginationLength = document.querySelectorAll(".pagination").length;
-    console.log(paginationLength);
     // document.querySelectorAll(".pagination ul")[0].parentNode.removeChild(document.querySelectorAll(".pagination ul")[0]);
     const selectUl = document.querySelectorAll(".pagination ul");
     if (selectUl.length >= 1) {document.querySelectorAll(".pagination ul")[0].parentNode.removeChild(document.querySelectorAll(".pagination ul")[0]);}
@@ -190,12 +190,15 @@ function unhighlight() {
     }
 }
     
+
+
     function highlight() {
         let link = document.querySelectorAll(".pagination ul li a");
         for(let i = 0; i < link.length; i++) {
             link[i].addEventListener("click", linkActive, false);
             function linkActive() {
                 link[i].classList.add("active");
+                showPage(i);
             }
         }
     }
@@ -208,8 +211,19 @@ function unhighlight() {
 
 function aSearching() {
     searching();
-    showPage(0);
+    let link = document.querySelectorAll(".pagination ul li a");
+    for(let i = 0; i < link.length; i++) {
+        link[i].addEventListener("click", linkActive, false);
+        function linkActive() {
+            link[i].classList.add("active");
+            showPage(i);
+        }  
+    }
 }
+
+// function paginationClick() {
+//     document.querySelector(".active");
+// } 
 
 
 aSearching()
