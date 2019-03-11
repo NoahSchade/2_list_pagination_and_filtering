@@ -108,10 +108,26 @@ const searching = function (event) {
     }
 }
 
+function showPage(num) {
+    let people = document.querySelectorAll(".student-item");
+    let chosenNumber = num;
+    let number = (chosenNumber * 10);
+
+       for (let i = 0; i < people.length; i++) {
+           document.querySelectorAll(".student-item")[i].style.display = "none";
+       }
+    
+       for (let i = number; i < (number + 10); i++) {
+          if (i < people.length) {
+             document.querySelectorAll(".matched")[i].style.display = "block";
+          }
+       }
+   }
+
 // const showPageVar = showPage(0);
 
-button.addEventListener("click", searching, false);
-document.querySelectorAll("#mySearch")[0].addEventListener("keyup", searching, false);
+button.addEventListener("click", aSearching, false);
+document.querySelectorAll("#mySearch")[0].addEventListener("keyup", aSearching, false);
 
 button.addEventListener("click", appendPageLinks, false);
 document.querySelectorAll("#mySearch")[0].addEventListener("keyup", appendPageLinks, false);
@@ -185,7 +201,11 @@ function unhighlight() {
     document.querySelector("#mySearch").addEventListener("keyup", highlight, false)
     button.addEventListener("click", highlight, false);
 
- 
-searching();
+function aSearching() {
+    searching();
+    showPage(0);
+}
 
+
+aSearching()
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
