@@ -152,20 +152,17 @@ function appendPageLinks() {
 
     
     function highlight() {
-    let link = document.querySelectorAll(".pagination ul li a");
-    for(let i = 0; i < link.length; i++) {
-        
-        console.log(link[i]);
+        let link = document.querySelectorAll(".pagination ul li a");
+        for(let i = 0; i < link.length; i++) {
+            link[i].addEventListener("click", linkActive, false);
+
+            function linkActive() {
+                link[i].classList.add("active");
+            }
+        }
     }
-}
-// function highlight() {
-//     for(let i = 0; i < link.length; i++) {
-//         console.log(link[i].textContent);
-//     }
-// }
 
-
-    document.querySelectorAll("#mySearch")[0].addEventListener("keyup", highlight, false)
+    document.querySelector("#mySearch").addEventListener("keyup", highlight, false)
     button.addEventListener("click", highlight, false);
 
  
