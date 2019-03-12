@@ -176,6 +176,10 @@ function appendPageLinks() {
     
     }
 
+    if(!document.querySelector(".pagination ul li a")) { 
+        console.log("test");
+    }
+
 }
 
 function unhighlight() {
