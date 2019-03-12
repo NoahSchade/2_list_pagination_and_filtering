@@ -1,19 +1,33 @@
+// Creates a variable to select the students.
 let people = document.querySelectorAll(".student-item");
 
+// Creates a div element to contain the search bar input field and button.
 const divForSearch = document.createElement("DIV");
+// Sets the div element's class to "student-search".
 divForSearch.setAttribute("class", "student-search");
+// Creates a variable to select the element with a class of "page-header". This element contains the title and search bar as children.
 const page_header = document.querySelector(".page-header");
+// The div element becomes a child of the "page_header". 
 page_header.appendChild(divForSearch);
+// An input field element is created. 
 let input = document.createElement("INPUT");
+// A placeholder is added to the input field.
 input.setAttribute("placeholder", "Search for students...");
+// The input gets a type attribute with a value of search.
 input.setAttribute("type", "search");
+// The input gets an id attribute with a value of "mySearch".
 input.setAttribute("id", "mySearch");
+// The div element gets an input field as its child.
 divForSearch.appendChild(input);
+// A button is created and appended to the div element.
 const button = document.createElement("BUTTON");
 divForSearch.appendChild(button);
-document.querySelectorAll("button")[0].style.marginLeft = "4px"; 
+// The button gets a left margin with 4 pixels.
+document.querySelector("button").style.marginLeft = "4px";
+// The "Search" text is added to the button. 
 let search = document.createTextNode("Search");
 button.appendChild(search);
+
 
 for(let i = 0; i < people.length; i++) {
     people[i].classList.add("matched");
