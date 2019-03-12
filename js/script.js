@@ -228,3 +228,6 @@ function aSearching() {
 
 aSearching()
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
+
+// -Write my own comments
+// -Write a search results message of no student found
