@@ -177,7 +177,17 @@ function appendPageLinks() {
     }
 
     if(!document.querySelector(".pagination ul li a")) { 
-        console.log("test");
+        const noMatchesFound = document.createElement("DIV");
+        noMatchesFound.innerHTML = "No matches found!";
+        document.querySelector(".student-list").appendChild(noMatchesFound);
+        noMatchesFound.classList.add("noMatchesFound");
+        if(document.querySelectorAll(".noMatchesFound").length > 1) {
+            document.querySelector(".noMatchesFound").parentNode.removeChild(document.querySelector(".noMatchesFound"));
+        }
+    } else {
+        if(document.querySelector(".noMatchesFound")) {
+            document.querySelector(".noMatchesFound").parentNode.removeChild(document.querySelector(".noMatchesFound"));
+        }
     }
 
 }
