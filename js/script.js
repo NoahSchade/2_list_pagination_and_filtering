@@ -92,10 +92,11 @@ button.addEventListener("click", aSearching, false);
 document.querySelectorAll("#mySearch")[0].addEventListener("keyup", aSearching, false);
 // When the search button is clicked, execute the "appendPageLinks" function.
 button.addEventListener("click", appendPageLinks, false);
-// When a key is pressed and released when the search bar is selected, execute the "appendPageLinks" function.
+// When a key is pressed and released and the search bar is selected, execute the "appendPageLinks" function.
 document.querySelectorAll("#mySearch")[0].addEventListener("keyup", appendPageLinks, false);
 
 
+// This function creates pagination buttons and prints out a "No matches found" message if there are no students found.
 function appendPageLinks() {
     let paginationLength = document.querySelectorAll(".pagination").length;
     const selectUl = document.querySelectorAll(".pagination ul");
@@ -148,6 +149,7 @@ function appendPageLinks() {
 
 }
 
+// Removes the blue background color of the pagination button when another pagination button is clicked. 
 function unhighlight() {
     let link = document.querySelectorAll(".pagination ul li a");
     for(let i = 0; i < link.length; i++) {
@@ -161,7 +163,7 @@ function unhighlight() {
 }
     
 
-
+// Adds a blue background color to the pagination button clicked and executes the showPage button.
     function highlight() {
         let link = document.querySelectorAll(".pagination ul li a");
         for(let i = 0; i < link.length; i++) {
@@ -173,10 +175,14 @@ function unhighlight() {
         }
     }
 
-    document.querySelector("#mySearch").addEventListener("keyup", unhighlight, false)
+    // When a key is pressed and released and the searchbar is selected, execute the unhighlight function.
+    document.querySelector("#mySearch").addEventListener("keyup", unhighlight, false);
+    // When the search button is clicked, execute the unhighlight function.
     button.addEventListener("click", unhighlight, false);
 
-    document.querySelector("#mySearch").addEventListener("keyup", highlight, false)
+    // When a key is pressed and released and the searchbar is selected, execute the highlight function.
+    document.querySelector("#mySearch").addEventListener("keyup", highlight, false);
+    // When the search button is clicked, execute the highlight function.
     button.addEventListener("click", highlight, false);
 
 // This function adds a class of "active" to the pagination button clicked and displays the students that matched the search and matched the pagination button clicked.
@@ -192,4 +198,5 @@ function aSearching() {
     }
 }
 
+// Calls the aSearching function.
 aSearching()
