@@ -28,16 +28,18 @@ document.querySelector("button").style.marginLeft = "4px";
 let search = document.createTextNode("Search");
 button.appendChild(search);
 
-
+// All students are given a class of "matched".
 for(let i = 0; i < people.length; i++) {
     people[i].classList.add("matched");
 }
 
+// Calls three functions.
 appendPageLinks();
 unhighlight();
 highlight();
 
-const searching = function (event) {
+// This function checks to see if the student's name matches what is typed into the searchbar and displays those that are a match.
+const searching = function() {
     let mySearch = document.querySelector("#mySearch").value;
     let name;
     let match1;
@@ -47,8 +49,6 @@ const searching = function (event) {
         name = document.querySelectorAll(".student-details h3")[i].textContent;
         let variable = mySearch;
         let regex = new RegExp("^" + variable + ".*");
-        // let string = "";
-        // string.replace(regex, "replacement");
         match1 = mySearch.match(regex);
         match2 = name.match(regex);
         document.querySelectorAll(".student-item")[i].style.display = "none";
@@ -67,6 +67,7 @@ const searching = function (event) {
     }
 }
 
+// This function displays the students that matched the search and matched the pagination button selected.
 function showPage(num) {
     let people = document.querySelectorAll(".student-item");
     let chosenNumber = num;
