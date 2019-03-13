@@ -86,13 +86,15 @@ function showPage(num) {
        }
    }
 
-
+// When the search button is clicked, execute the "aSearching" function.
 button.addEventListener("click", aSearching, false);
+// When a key is pressed and released when the search bar is selected, execute the "aSearching" function.
 document.querySelectorAll("#mySearch")[0].addEventListener("keyup", aSearching, false);
-document.querySelectorAll('.pagination ul li a')[1].addEventListener("click", aSearching, false);
-
+// When the search button is clicked, execute the "appendPageLinks" function.
 button.addEventListener("click", appendPageLinks, false);
+// When a key is pressed and released when the search bar is selected, execute the "appendPageLinks" function.
 document.querySelectorAll("#mySearch")[0].addEventListener("keyup", appendPageLinks, false);
+
 
 function appendPageLinks() {
     let paginationLength = document.querySelectorAll(".pagination").length;
@@ -177,6 +179,7 @@ function unhighlight() {
     document.querySelector("#mySearch").addEventListener("keyup", highlight, false)
     button.addEventListener("click", highlight, false);
 
+// This function adds a class of "active" to the pagination button clicked and displays the students that matched the search and matched the pagination button clicked.
 function aSearching() {
     searching();
     let link = document.querySelectorAll(".pagination ul li a");
